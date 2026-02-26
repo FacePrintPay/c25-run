@@ -1,22 +1,22 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>c25-run</title>
 <style>body{background:#0a0a1a;color:#e0e0ff;font-family:monospace;padding:20px;max-width:900px;margin:0 auto}h1{color:#7af}.badge{background:#1a3a1a;border:1px solid #4f4;padding:3px 10px;border-radius:20px;font-size:.8em;color:#4f4}pre{background:#111128;border:1px solid #333;border-radius:8px;padding:20px;overflow-x:auto;margin-top:20px}</style>
-</head><body><span class="badge">✅ CONFIRMED RAN</span><h1>c25-run</h1><p style="color:#888">Lines: 36 | Deps: curl go node pip python  | C25 FacePrintPay</p><pre>#!/usr/bin/env bash
-# CONSTELLATION-25 - PATHOS ORCHESTRATED AGENT RUNNER
-PATHOS="http://localhost:5000"
-ping_pathos() {
-  curl -s "$PATHOS" &gt;/dev/null 2&gt;&1 && return 0
-  echo "⚠️  PaTHos not running. Starting..."
-  cd "$HOME/sovereign-gtp/src/PaThosAi/virtual-platform/backend"
-  node server.js &
-  sleep 2
-}
-while true; do
-  clear
-  ping_pathos
-  echo "╔════════════════════════════════════════════════════════════╗"
-  echo "║        CONSTELLATION 25 - PATHOS ORCHESTRATED              ║"
-  printf "║        Time: %-47s║\n" "$(date '+%Y-%m-%d %H:%M:%S')"
-  echo "║        PaTHos: ✅ localhost:5000                           ║"
-  echo "╠════════════════════════════════════════════════════════════╣"
-  echo "║  1  Earth      - Foundational code structure               ║"
-  echo "║  2  Moon       - Syntax error resolution                   ║"</pre></body></html>
+</head><body><span class="badge">✅ CONFIRMED RAN</span><h1>c25-run</h1><p style="color:#888">Lines: 36 | Deps: pip  | C25 FacePrintPay</p><pre>#!/usr/bin/env bash
+set -euo pipefail
+SYSROOT=$(cat "$HOME/.sysroot")
+RUN_ID=$(date +%Y%m%d_%H%M%S)_$$
+RUN_DIR="$SYSROOT/runs/$RUN_ID"
+RESULT_DIR="$SYSROOT/results/$RUN_ID"
+mkdir -p "$RUN_DIR" "$RESULT_DIR"
+LOG="$RUN_DIR/run.log"
+SUMMARY="$RESULT_DIR/summary.md"
+exec &gt; &gt;(tee -a "$LOG") 2&gt;&1
+echo "# RUN $RUN_ID" &gt;&gt; "$SUMMARY"
+echo "- Started: $(date)" &gt;&gt; "$SUMMARY"
+echo "- Command: $@" &gt;&gt; "$SUMMARY"
+echo "" &gt;&gt; "$SUMMARY"
+"$@" || echo "❌ ERROR" &gt;&gt; "$SUMMARY"
+echo "" &gt;&gt; "$SUMMARY"
+echo "- Finished: $(date)" &gt;&gt; "$SUMMARY"
+echo "- Log: $LOG" &gt;&gt; "$SUMMARY"
+ln -s "$RESULT_DIR" "$SYSROOT/results/latest"
+echo "✅ RESULT: $RESULT_DIR"</pre></body></html>
