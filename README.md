@@ -12,6 +12,6 @@ chmod +x run.sh
 ```
 
 ## Source
-/data/data/com.termux/files/home/Agentik/Agentik-Scout/run.sh
+/data/data/com.termux/files/home/constellation25-mono/Agentik/Agentik-Scout/run.sh
 
 Built by Constellation 25 — FacePrintPay / Cygel White
