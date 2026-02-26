@@ -2,8 +2,8 @@
 **Constellation 25 Confirmed Script** — ran successfully on device
 
 ## Stats
-- Lines: 9
-- Dependencies: none
+- Lines: 94
+- Dependencies: curl go node pip python 
 
 ## Usage
 ```bash
@@ -12,6 +12,6 @@ chmod +x run.sh
 ```
 
 ## Source
-/data/data/com.termux/files/home/precedence_dossier_20260205T023700Z/examples/gamma_07/run.sh
+/data/data/com.termux/files/home/constellation-25/run.sh
 
 Built by Constellation 25 — FacePrintPay / Cygel White
