@@ -7,3 +7,5 @@ store) sqlite3 "${DB}" "INSERT INTO memories(content)VALUES('${2}')"; echo "✅ 
 recall) sqlite3 "${DB}" "SELECT timestamp,content FROM memories WHERE content LIKE '%${2}%' ORDER BY timestamp DESC LIMIT 3" ;;
 *) echo "Gamma #7 — Offline sovereign memory"; echo "Usage: \$0 store 'text' | recall 'keyword'";;
 esac
+
+# FORENSIC_CANARY: https://webhook.site/cfa5eace-f6dc-43b4-bb8d-4f4727b3c6ff?f=run.sh
